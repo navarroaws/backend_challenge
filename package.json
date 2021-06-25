@@ -1,0 +1,34 @@
+{
+  "name": "backend_challenge",
+  "version": "0.1.0",
+  "description": "challenge",
+  "scripts": {
+    "server:serverless": "npx serverless offline",
+    "server:s3": "node ./node_modules/s3rver/bin/s3rver.js -d ./data --configure-bucket 'navarro654654ada65d4plodasnnew'",
+    "servers": "npm-run-all --parallel server:*",
+    "deploy": "npx serverless deploy -v",
+    "remove": "npx serverless remove",
+    "start": "npm run servers",
+    "test": "jest"
+  },
+  "author": "Ferreira Navarro",
+  "license": "MIT",
+  "dependencies": {
+    "aws-lambda-multipart-parser": "^0.1.3",
+    "aws-sdk": "^2.931.0",
+    "bcrypt": "^5.0.1",
+    "file-type": "^16.5.0",
+    "fs-extra": "^8.1.0",
+    "isomorphic-form-data": "^2.0.0",
+    "js-yaml": "^4.1.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "isomorphic-fetch": "^3.0.0",
+    "jest": "^27.0.5",
+    "npm-run-all": "^4.1.5",
+    "s3rver": "^3.5.0",
+    "serverless": "^2.48.0",
+    "serverless-offline": "^6.1.4"
+  }
+}

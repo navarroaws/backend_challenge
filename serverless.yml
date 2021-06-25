@@ -1,0 +1,58 @@
+service: backend-challenge-navarro-01001
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  stage: dev
+  lambdaHashingVersion: 20201221
+  environment:
+    BUCKET_NAME: navarro654654ada65d4plodasnnew
+    OFFLINE: false
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:ListBucket
+          Resource: "arn:aws:s3:::${self:provider.environment.BUCKET_NAME}"
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:GetObject
+            - s3:DeleteObject
+          Resource: "arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*"
+
+functions:
+  createFile:
+    handler: lambdas.createFile
+    events:
+      - http:
+          path: secure-api-files
+          method: post
+          cors: true
+  createUser:
+    handler: lambdas.createUser
+    events:
+      - http:
+          path: secure-api-files/user
+          method: post
+          cors: true
+  loginUser:
+    handler: lambdas.loginUser
+    events:
+      - http:
+          path: secure-api-files/user/login
+          method: post
+          cors: true
+
+resources:
+  Resources:
+    bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.BUCKET_NAME}
+        AccessControl: PublicReadWrite
