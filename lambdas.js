@@ -1,5 +1,5 @@
 'use strict'
-const { createFile } = require('./modules/files/lambdas')
+const {createFile} = require('./modules/files/lambdas')
 const {createUser, loginUser} = require('./modules/users/lambdas')
 
 function makeResponse(result, context) {

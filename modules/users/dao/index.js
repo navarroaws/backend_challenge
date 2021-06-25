@@ -12,8 +12,6 @@ const findUserByEmail = (userEmail) => {
     }
 
     const users = memoryDb.find(USER_COLLECTION)
-    console.log("users")
-    console.log(users)
     if (!users) {
         throw new Error('user not found')
     }
