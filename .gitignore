@@ -1,0 +1,10 @@
+.serverless
+npm-debug.*
+dist
+node_modules
+.DS_Store
+.tmp
+.env
+data/navarro654654ada65d4plodasn/*
+data/navarro654654ada65d4plodasna/*
+auth
