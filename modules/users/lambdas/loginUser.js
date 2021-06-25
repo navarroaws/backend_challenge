@@ -10,7 +10,5 @@ module.exports = async (event) => {
 
     const match = await bcrypt.compare(credentials.password, user.hash)
 
-    if (match) {
-       return jwt.sign({ user }, secret);
-    }
+       return match ? jwt.sign({ user }, secret) : throw new Error("invalid credentials");
 }
